@@ -10,7 +10,7 @@ async function createProject(req, res) {
     const project = await projectService.createProject(req.body, req.user.id);
     res.json({ success: true, project });
   } catch (error) {
-    
+    res.status(500).json({ success: false, message: error.message });
   }
 }
 
@@ -19,7 +19,7 @@ async function getProjects(req, res) {
     const projects = await projectService.getProjects(req.user.id);
     res.json({ success: true, projects });
   } catch (error) {
-    
+    res.status(500).json({ success: false, message: error.message });
   }
 }
 
