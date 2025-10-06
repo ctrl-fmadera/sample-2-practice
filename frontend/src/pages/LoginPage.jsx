@@ -18,6 +18,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import * as yup from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup"
 import "../Registrationpage.css"
+import { Route, Routes } from 'react-router-dom'
 
 const schema = yup.object().shape({
   username: yup.string().required("Username is required"),
@@ -28,7 +29,7 @@ const schema = yup.object().shape({
     .max(20, "Password must be at most 20 characters"),
 })
 
-const Registrationpage = () => {
+const LoginPage = () => {
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
     resolver: yupResolver(schema)
   })
@@ -40,14 +41,14 @@ const Registrationpage = () => {
   return (
     <Center minH="100vh" p={6}>
       <Box w="full" maxW="md" p={6} borderWidth="1px" rounded="md" boxShadow="md">
-        <Heading size="md" mb={4} textAlign="center">Registration</Heading>
+        <Heading size="md" mb={4} textAlign="center">Login</Heading>
 
         <Box as="form" onSubmit={handleSubmit(onSubmit)}>
           <Fieldset.Root size="lg" maxW="md">
             <Stack mb={4}>
-              <Fieldset.Legend>User details</Fieldset.Legend>
+              <Fieldset.Legend>Welcome Back!</Fieldset.Legend>
               <Fieldset.HelperText>
-                Please provide your details below.
+                Please enter your login details below.
               </Fieldset.HelperText>
             </Stack>
 
@@ -70,13 +71,13 @@ const Registrationpage = () => {
             </Fieldset.Content>
 
             <Button type="submit" alignSelf="flex-start" mt={4} isLoading={isSubmitting}>
-              Submit
+              Login
             </Button>
 
             <Text mt={4} fontSize="sm" textAlign="center">
-              Already have an account?{" "}
-              <Link as={RouterLink} to="/login" color="blue.600" fontWeight="semibold">
-                Login here
+              Don't have an account?{" "} 
+              <Link as={RouterLink} to="/" color="blue.600" fontWeight="semibold">
+                Register here
               </Link>
             </Text>
 
@@ -87,4 +88,4 @@ const Registrationpage = () => {
   )
 }
 
-export default Registrationpage
+export default LoginPage
