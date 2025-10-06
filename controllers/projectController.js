@@ -1,4 +1,3 @@
-// controllers/projectController.js
 const { validationResult } = require('express-validator');
 const projectService = require('../services/projectService');
 
